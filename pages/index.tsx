@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import Head from 'next/head'
+import Masonry from 'react-masonry-css'
 import { useAppContext } from '../context/TezosMoon'
 import styles from '../styles/Home.module.css'
+import NFTMasonry from '../components/NFTMasonry';
 
 export default function Home() {
 
@@ -33,30 +33,17 @@ export default function Home() {
         <h1>Tezos Moon</h1>
         <p>Augment your <a href="https://hicetnunc.xyz" target="_blank">hicetnunc</a> NFT experience.</p>
 
-        {ctx && ctx.collection && ctx.creations && [...ctx.creations, ...ctx.collection].map((nft) => {
-          return (
-            <div key={nft.token.id} className={styles.nft}>
-              <h3>{nft.token.title}</h3>
-              <p>{JSON.stringify(nft.token, null, 2)}</p>
-              <div className={styles.mediaBox}>
-                {(nft.token.mime === 'video/mp4') && <video
-                    loop={true}
-                    src={"https://ipfs.io/ipfs/"+nft.token.artifact_uri.split('ipfs://').pop()}
-                    poster={"https://ipfs.io/ipfs/"+nft.token.display_uri.split('ipfs://').pop()}
-                    autoPlay={true}
-                    playsInline={true}
-                    muted={true}
-                ></video>}
-                
-                {(nft.token.mime.split('/')[0] === 'image') && <Image
-                  layout={'fill'}
-                  objectFit={'contain'}
-                  src={"https://ipfs.io/ipfs/"+nft.token.artifact_uri.split('ipfs://').pop()}
-                />}
-              </div>
-            </div>
-          )
-        })}
+        <Masonry
+
+          breakpointCols={3}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column">
+          {ctx && ctx.collection && ctx.creations && [...ctx.creations, ...ctx.collection].map((nft) => {
+            return (
+              <NFTMasonry nft={nft} />
+            )
+          })}
+        </Masonry>
       </main>
 
       <footer className={styles.footer}>

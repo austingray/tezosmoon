@@ -129,31 +129,24 @@
   display: block;
   position:relative;
   width: 92%;
-  margin: 24px 0;
-  border: 1px solid #222;
-  padding: 24px;
 }
 
 .nft .mediaBox {
   display:block;
-  height: 50vh;
+  height: auto;
   position:relative;
+  width: auto;
 }
 
-.nft .mediaBox video {
-  height: 50vh;
-  position: absolute;
+.nft .mediaBox video,
+.nft .mediaBox img {
+  height: auto;
   inset: 0px;
   box-sizing: border-box;
   padding: 0px;
   border: none;
   margin: auto;
   display: block;
-  width: 0px;
-  height: 0px;
-  min-width: 100%;
   max-width: 100%;
-  min-height: 100%;
   max-height: 100%;
-  object-fit: contain;
 }
