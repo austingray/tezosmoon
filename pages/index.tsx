@@ -33,7 +33,7 @@ export default function Home() {
         <h1>Tezos Moon</h1>
         <p>Augment your <a href="https://hicetnunc.xyz" target="_blank">hicetnunc</a> NFT experience.</p>
 
-        {ctx && ctx.collection && ctx.collection.map((nft) => {
+        {ctx && ctx.collection && ctx.creations && [...ctx.creations, ...ctx.collection].map((nft) => {
           return (
             <div key={nft.token.id} className={styles.nft}>
               <h3>{nft.token.title}</h3>

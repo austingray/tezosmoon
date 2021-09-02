@@ -9,6 +9,29 @@ const sortByTokenId = (a, b) => {
   return b.id - a.id
 }
 
+const query_creations = `
+query creatorGallery($address: String!) {
+  hic_et_nunc_token(where: {creator: {address: {_eq: $address}}, supply: {_gt: 0}}, order_by: {id: desc}) {
+    id
+    artifact_uri
+    display_uri
+    mime
+    title
+    description
+    supply
+    swaps(order_by: {price: asc}, limit: 1, where: {amount_left: {_gte: "1"}, status: {_eq: "0"}}) {
+      status
+      amount_left
+      creator_id
+      creator {
+        address
+      }
+      price
+    }
+  }
+}
+`
+
 const query_collection = `
 query collectorGallery($address: String!) {
   hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}, token: {creator: {address: {_neq: $address}}}, quantity: {_gt: "0"}}, order_by: {token_id: desc}) {
@@ -47,6 +70,20 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
   return await result.json()
 }
 
+async function fetchCreations(addr) {
+  const { errors, data } = await fetchGraphQL(
+    query_creations,
+    'creatorGallery',
+    { address: addr }
+  )
+  if (errors) {
+    console.error(errors)
+  }
+  const result = data.hic_et_nunc_token
+  /* console.log({ result }) */
+  return result
+}
+
 async function fetchCollection(addr) {
   const { errors, data } = await fetchGraphQL(
     query_collection,
@@ -83,9 +120,12 @@ export class BeaconWrapper extends React.Component {
 
     let address = undefined;
     let collection = [];
+    let creations = [];
     if (activeAccount) {
       address = await wallet.getPKH();
       collection = await fetchCollection(activeAccount.address);
+      creations = await fetchCreations(activeAccount.address);
+      creations = creations.map(c => ({token: c}));
     }
 
     this.setState({
@@ -94,6 +134,7 @@ export class BeaconWrapper extends React.Component {
       activeAccount,
       wallet,
       collection,
+      creations,
 
       login: async () => {
         const network = {
