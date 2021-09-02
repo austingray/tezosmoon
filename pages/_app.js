@@ -1,7 +1,12 @@
 import '../styles/globals.css'
+import { BeaconWrapper } from '../context/TezosMoon.tsx'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function Application({ Component, pageProps }) {
+  return (
+    <BeaconWrapper>
+      <Component {...pageProps} />
+    </BeaconWrapper >
+  )
 }
 
-export default MyApp
+export default Application
