@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Header from '../components/Header'
+import Footer from '../components/Footer';
 import { TezosMoon } from '../context/TezosMoon'
 
 function Application({ Component, pageProps }) {
@@ -8,6 +9,7 @@ function Application({ Component, pageProps }) {
       <div>
         <Header />
         <Component {...pageProps} />
+        <Footer />
       </div>
     </TezosMoon>
   )

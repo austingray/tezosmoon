@@ -3,14 +3,8 @@
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  
   align-items: center;
-  height: 100vh;
-  position:relative;
-}
-
-.header {
-  padding: 24px;
+  position: relative;
 }
 
 .main {
@@ -127,14 +121,14 @@
 
 .nft {
   display: block;
-  position:relative;
+  position: relative;
   width: 92%;
 }
 
 .nft .mediaBox {
-  display:block;
+  display: block;
   height: auto;
-  position:relative;
+  position: relative;
   width: auto;
 }
 

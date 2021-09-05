@@ -7,7 +7,7 @@ import AppContext from "../context";
 export default function Home() {
   return (
     <AppContext.Consumer>
-      {({ collection }) => {
+      {({ activeAccount, collection }) => {
         return (
           <div className={styles.container}>
             <Head>
@@ -17,30 +17,28 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
-              <h1>Tezos Moon</h1>
-              <p>Tezos NFT Browser [alpha]</p>
+              {!activeAccount && (
+                <p className="max-w-md">
+                  Tezos Moon is an app to browse, display, and analyze your
+                  Tezos NFTs (only hicetnunc for now). Use the 'connect' button
+                  in the upper right to connect your wallet and browse your
+                  collection.
+                </p>
+              )}
 
-              <Masonry
-                breakpointCols={3}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column"
-              >
-                {collection.map((nft) => {
-                  return <NFTRaw nft={nft} />;
-                })}
-              </Masonry>
-            </main>
-
-            <footer className={styles.footer}>
-              <div>
-                <a
-                  href="https://github.com/austingray/tezosmoon"
-                  target="_blank"
+              {activeAccount && (
+                <Masonry
+                  breakpointCols={3}
+                  className="my-masonry-grid"
+                  columnClassName="my-masonry-grid_column"
                 >
-                  View on Github
-                </a>
-              </div>
-            </footer>
+                  {collection &&
+                    collection.map((nft) => {
+                      return <NFTRaw nft={nft} />;
+                    })}
+                </Masonry>
+              )}
+            </main>
           </div>
         );
       }}
