@@ -1,132 +1,64 @@
-import React, { createContext, useContext, useEffect } from 'react';
-import { TezosToolkit } from '@taquito/taquito';
-import { BeaconWallet } from '@taquito/beacon-wallet';
-import { NetworkType } from '@airgap/beacon-sdk';
+import React, { createContext, useContext } from "react";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { NetworkType } from "@airgap/beacon-sdk";
+import { fetchCollectorGallery, fetchCreatorGallery } from "./graphql/queries";
+import AppContext, { defaultCtx } from ".";
 
-const fetch = require('node-fetch')
-
-const sortByTokenId = (a, b) => {
-  return b.id - a.id
-}
-
-const query_creations = `
-query creatorGallery($address: String!) {
-  hic_et_nunc_token(where: {creator: {address: {_eq: $address}}, supply: {_gt: 0}}, order_by: {id: desc}) {
-    id
-    artifact_uri
-    display_uri
-    mime
-    title
-    description
-    supply
-    swaps(order_by: {price: asc}, limit: 1, where: {amount_left: {_gte: "1"}, status: {_eq: "0"}}) {
-      status
-      amount_left
-      creator_id
-      creator {
-        address
-      }
-      price
-    }
-  }
-}
-`
-
-const query_collection = `
-query collectorGallery($address: String!) {
-  hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}, token: {creator: {address: {_neq: $address}}}, quantity: {_gt: "0"}}, order_by: {token_id: desc}) {
-    token {
-      id
-      artifact_uri
-      display_uri
-      thumbnail_uri
-      timestamp
-      mime
-      title
-      description
-      supply
-      token_tags {
-        tag {
-          tag
-        }
-      }
-      creator {
-        address
-      }
-    }
-  }
-}
-`
-
-async function fetchGraphQL(operationsDoc, operationName, variables) {
-  let result = await fetch('https://api.hicdex.com/v1/graphql', {
-    method: 'POST',
-    body: JSON.stringify({
-      query: operationsDoc,
-      variables: variables,
-      operationName: operationName,
-    }),
-  })
-  return await result.json()
-}
-
-async function fetchCreations(addr) {
-  const { errors, data } = await fetchGraphQL(
-    query_creations,
-    'creatorGallery',
-    { address: addr }
-  )
-  if (errors) {
-    console.error(errors)
-  }
-  const result = data.hic_et_nunc_token
-  /* console.log({ result }) */
-  return result
-}
-
-async function fetchCollection(addr) {
-  const { errors, data } = await fetchGraphQL(
-    query_collection,
-    'collectorGallery',
-    { address: addr }
-  )
-  if (errors) {
-    console.error(errors)
-  }
-  const result = data.hic_et_nunc_token_holder
-  // console.log('collection result' + { result })
-  return result
-}
-
-const AppContext = createContext(undefined);
-
-export class BeaconWrapper extends React.Component {
+export class TezosMoon extends React.Component {
   constructor(props) {
-    super(props);    
+    super(props);
+
+    this.state = defaultCtx;
   }
 
   componentDidMount = async () => {
-    const Tezos = new TezosToolkit('https://api.tez.ie/rpc/mainnet');
-
     const wallet = new BeaconWallet({
-      name: 'tezosmoon.com',
+      name: "tezosmoon.com",
       preferredNetwork: NetworkType.MAINNET,
     });
 
+    const Tezos = new TezosToolkit("https://api.tez.ie/rpc/mainnet");
     Tezos.setWalletProvider(wallet);
 
-    const activeAccount = await wallet.client.getActiveAccount()
-    console.log({activeAccount})
+    const activeAccount = await wallet.client.getActiveAccount();
+    console.log({ activeAccount });
 
     let address = undefined;
     let collection = [];
     let creations = [];
     if (activeAccount) {
       address = await wallet.getPKH();
-      collection = await fetchCollection(activeAccount.address);
-      creations = await fetchCreations(activeAccount.address);
-      creations = creations.map(c => ({token: c}));
+      collection = await fetchCollectorGallery(activeAccount.address);
+      creations = await fetchCreatorGallery(activeAccount.address);
     }
+
+    const login = async () => {
+      await wallet.requestPermissions({
+        network: {
+          type: NetworkType.MAINNET,
+          rpcUrl: "https://mainnet.smartpy.io",
+        },
+      });
+
+      const activeAccount = await wallet.client.getActiveAccount();
+      const address = await wallet.getPKH();
+      const collection = await fetchCollectorGallery(activeAccount.address);
+      this.setState({
+        activeAccount,
+        address,
+        collection,
+      });
+    };
+
+    const logout = async () => {
+      await wallet.client.clearActiveAccount();
+      this.setState({
+        activeAccount: undefined,
+        address: undefined,
+        collection: undefined,
+      });
+    };
 
     this.setState({
       Tezos: Tezos,
@@ -135,33 +67,10 @@ export class BeaconWrapper extends React.Component {
       wallet,
       collection,
       creations,
-
-      login: async () => {
-        const network = {
-          type: NetworkType.MAINNET,
-          rpcUrl: 'https://mainnet.smartpy.io',
-        }
-        await wallet.requestPermissions({ network })
-        const activeAccount = await wallet.client.getActiveAccount()
-        const collection = await fetchCollection(activeAccount.address);
-        console.log(collection);
-        this.setState({ 
-          activeAccount,
-          address: await wallet.getPKH(),
-          collection,
-        })
-      },
-      
-      logout: async () => {
-        await wallet.client.clearActiveAccount()
-        this.setState({
-          activeAccount: undefined,
-          address: undefined,
-          collection: undefined,
-        })
-      }
+      login,
+      logout,
     });
-  }
+  };
 
   render() {
     return (
@@ -170,8 +79,4 @@ export class BeaconWrapper extends React.Component {
       </AppContext.Provider>
     );
   }
-}
-
-export function useAppContext() {
-  return useContext(AppContext);
 }
