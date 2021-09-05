@@ -4,8 +4,6 @@ import styles from "../styles/Home.module.css";
 import NFTRaw from "../components/NFTRaw";
 import AppContext from "../context";
 
-const viewOptions = ["date: newest", "date: oldest"];
-
 export default function Home() {
   return (
     <AppContext.Consumer>
@@ -21,15 +19,6 @@ export default function Home() {
             <main className={styles.main}>
               <h1>Tezos Moon</h1>
               <p>Tezos NFT Browser [alpha]</p>
-              <div className={styles["pick-view"]}>
-                <label htmlFor="pick-view">sort by</label>
-                <select id="pick-view" name="pick-view" onChange={() => {}}>
-                  {viewOptions.map((opt) => {
-                    return <option>{opt}</option>;
-                  })}
-                  <option></option>
-                </select>
-              </div>
 
               <Masonry
                 breakpointCols={3}
@@ -58,7 +47,3 @@ export default function Home() {
     </AppContext.Consumer>
   );
 }
-
-// export async function getStaticProps({ params }) {
-//   return { props: {} };
-// }
