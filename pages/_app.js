@@ -1,11 +1,17 @@
 import '../styles/globals.css'
-import { BeaconWrapper } from '../context/TezosMoon.tsx'
+import Header from '../components/Header'
+import Footer from '../components/Footer';
+import { TezosMoon } from '../context/TezosMoon'
 
 function Application({ Component, pageProps }) {
   return (
-    <BeaconWrapper>
-      <Component {...pageProps} />
-    </BeaconWrapper >
+    <TezosMoon>
+      <div>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
+    </TezosMoon>
   )
 }
 
