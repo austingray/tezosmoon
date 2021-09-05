@@ -5,7 +5,7 @@ import { NetworkType } from "@airgap/beacon-sdk";
 import { fetchCollectorGallery, fetchCreatorGallery } from "./graphql/queries";
 import AppContext, { defaultCtx } from ".";
 
-export class TezosMoon extends React.Component {
+class AppContextProvider extends React.Component {
   constructor(props) {
     super(props);
 
@@ -80,3 +80,5 @@ export class TezosMoon extends React.Component {
     );
   }
 }
+
+export default AppContextProvider;

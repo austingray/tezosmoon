@@ -1,17 +1,17 @@
 import '../styles/globals.css'
 import Header from '../components/Header'
-import Footer from '../components/Footer';
-import { TezosMoon } from '../context/TezosMoon'
+import Footer from '../components/Footer'; 
+import AppContextProvider from '../context/AppContextProvider'
 
 function Application({ Component, pageProps }) {
   return (
-    <TezosMoon>
+    <AppContextProvider>
       <div>
         <Header />
         <Component {...pageProps} />
         <Footer />
       </div>
-    </TezosMoon>
+    </AppContextProvider>
   )
 }
 

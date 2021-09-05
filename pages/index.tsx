@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import AppContext from "../context";
 import MasonryLayout from "../components/MasonryLayout";
 
@@ -8,14 +7,14 @@ export default function Home() {
     <AppContext.Consumer>
       {({ activeAccount, collection }) => {
         return (
-          <div className={styles.container}>
+          <div className="">
             <Head>
               <title>Tezos Moon</title>
               <meta name="description" content="Tezos Moon App" />
               <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={styles.main}>
+            <main className="">
               {!activeAccount && (
                 <p className="max-w-md">
                   Tezos Moon is (will be) an app to browse, display, and analyze
