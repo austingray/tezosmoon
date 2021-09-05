@@ -6,7 +6,7 @@ function Footer() {
           className="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-sm flex-col
       md:flex-row"
         >
-          <div className="mt-2">🌙 Tezos Moon</div>
+          <div className="mt-2">🌙 Tezos Moon ️‍🔥️‍🔥️‍🔥 scoooooooop</div>
           <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
             <a
               href="https://twitter.com/austingray"

@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 
-export default function NFTRaw({ nft }) {
+export default function NFTMasonry({ nft }) {
   return (
     <div className={styles.nft}>
       <div className={styles.mediaBox}>

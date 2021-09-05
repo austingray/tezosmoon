@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  @variants responsive {
+    .masonry-3-col {
+      column-count: 3;
+      column-gap: 0.25em;
+    }
+    .masonry-2-col {
+      column-count: 2;
+      column-gap: 0.25em;
+    }
+    .break-inside {
+      break-inside: avoid;
+    }
+  }
+}
+
 html,
 body {
   background: #111111;
@@ -14,6 +30,10 @@ body {
 
 a {
   color: inherit;
+  text-decoration: underline;
+}
+
+a:hover {
   text-decoration: none;
 }
 
