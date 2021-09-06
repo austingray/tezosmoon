@@ -3,6 +3,7 @@ import { fetchCollectorGallery } from "../../../context/graphql/queries";
 import { validateAddress } from "@taquito/utils";
 import MasonryLayout from "../../../components/MasonryLayout";
 import TMHead from "../../../components/TMHead";
+import NavProfile from "../../../components/NavProfile";
 
 const Collection = ({ address, collection }) => {
   return (
@@ -10,6 +11,7 @@ const Collection = ({ address, collection }) => {
       <TMHead title={`Tezos Moon - ${address} Collection`} />
 
       <main className="p-6 ">
+        <NavProfile address={address} />
         <div className="">
           <MasonryLayout nfts={collection} />
         </div>
