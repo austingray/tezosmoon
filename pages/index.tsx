@@ -21,7 +21,9 @@ export default function Home() {
             <TMHead title="Tezos Moon - Tezos NFT Browser" />
 
             <div className="flex flex-wrap justify-center pt-12 lg:pt-24 align-middle">
-              <span className="text-8xl">ꜩ</span>
+              <span className="text-8xl" style={{ fontFamily: "unicode" }}>
+                ꜩ
+              </span>
               <span className="text-6xl">🌙</span>
             </div>
 
