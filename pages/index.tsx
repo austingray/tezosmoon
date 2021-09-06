@@ -20,14 +20,14 @@ export default function Home() {
           <div className="bg-gradient-to-r from-transparent via-purple-900 to-transparent">
             <TMHead title="Tezos Moon - Tezos NFT Browser" />
 
-            <div className="flex flex-wrap justify-center pt-24 align-middle">
+            <div className="flex flex-wrap justify-center pt-12 lg:pt-24 align-middle">
               <span className="text-8xl">ꜩ</span>
               <span className="text-6xl">🌙</span>
             </div>
 
             <main className="h-screen pt-12">
-              <div className="grid grid-cols-2 gap-8">
-                <div className="pl-48 text-right">
+              <div className="lg:grid lg:gap-8 lg:grid-cols-2">
+                <div className="lg:pl-36 lg:text-right px-12 lg:px-0">
                   <form onSubmit={handleSearch} className="mb-4">
                     <label
                       className="block text-white-700 text-sm font-bold mb-2"
@@ -42,13 +42,13 @@ export default function Home() {
                       type="text"
                       placeholder="e.g., tz1aLvmWNq1SbA8mTktMs9NwogU7rf8FiZHf"
                     />
-                    <div className="mt-3">
+                    <div className="mt-3 text-right">
                       <Button type="submit">Search</Button>
                     </div>
                   </form>
                 </div>
 
-                <div className="pr-48">
+                <div className="lg:pr-36 px-12 lg:px-0">
                   Tezos Moon is an app to browse, manage, display, and analyze
                   Tezos NFTs (only{" "}
                   <a href="https://hicetnunc.xyz" target="_blank">

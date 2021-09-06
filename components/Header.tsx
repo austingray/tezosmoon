@@ -15,17 +15,17 @@ function Header() {
                 </a>
               </Link>
             </div>
-            <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-              <div className="text-sm lg:flex-grow">
+            <div className="flex-grow flex items-center w-auto">
+              <div className="text-sm flex-grow">
                 {activeAccount && (
                   <>
                     <Link href={`/profile/${activeAccount.address}/creations`}>
-                      <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                      <a className="inline-block mt-0 text-teal-lighter hover:text-white mr-4">
                         My Creations
                       </a>
                     </Link>
                     <Link href={`/profile/${activeAccount.address}/collection`}>
-                      <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                      <a className="lg:inline-block mt-0 text-teal-lighter hover:text-white mr-4">
                         My Collection
                       </a>
                     </Link>
