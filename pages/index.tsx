@@ -52,6 +52,7 @@ export default function Home() {
                     <div className="mt-3 text-right">
                       <Button type="submit">Search</Button>
                     </div>
+                    <div className="mt-4">Might go here: Recent searches</div>
                   </form>
                 </div>
 
@@ -68,7 +69,7 @@ export default function Home() {
                   >
                     github
                   </a>
-                  .
+                  .<div className="mt-4">Might go here: List of tools</div>
                 </div>
               </div>
             </main>
