@@ -1,9 +1,8 @@
-import Head from "next/head";
 import { fetchCollectorGallery } from "../../../context/graphql/queries";
 import { validateAddress } from "@taquito/utils";
-import MasonryLayout from "../../../components/MasonryLayout";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
+import NFTLayoutList from "../../../components/NFTLayoutList";
 
 const Collection = ({ address, collection }) => {
   return (
@@ -13,7 +12,7 @@ const Collection = ({ address, collection }) => {
       <main className="p-6 ">
         <NavProfile address={address} />
         <div className="">
-          <MasonryLayout nfts={collection} />
+          <NFTLayoutList nfts={collection} />
         </div>
       </main>
     </div>

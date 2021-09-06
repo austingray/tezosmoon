@@ -3,6 +3,7 @@ import AppContext from "../context";
 import Button from "../components/Button";
 import router from "next/router";
 import { validateAddress } from "@taquito/utils";
+import SVGTezos from "../components/SVG/Tezos";
 
 export default function Home() {
   const handleSearch = (e) => {
@@ -21,8 +22,12 @@ export default function Home() {
             <TMHead title="Tezos Moon - Tezos NFT Browser" />
 
             <div className="flex flex-wrap justify-center pt-12 lg:pt-24 align-middle">
-              <span className="text-8xl" style={{ fontFamily: "unicode" }}>
-                ꜩ
+              <span className="text-8xl">
+                <SVGTezos
+                  color="#dedede"
+                  className="w-full"
+                  style={{ width: "68px" }}
+                />
               </span>
               <span className="text-6xl">🌙</span>
             </div>
