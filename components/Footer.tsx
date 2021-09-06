@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <div
-      className="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-sm flex-col
+      className="lg:flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-sm flex-col
       md:flex-row"
     >
       <div className="pt-2">
@@ -18,7 +18,7 @@ function Footer() {
         <a
           href="https://twitter.com/austingray"
           target="_blank"
-          className="mx-1"
+          className="lg:mx-1"
         >
           made with love by auger
         </a>{" "}
