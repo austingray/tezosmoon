@@ -1,37 +1,66 @@
-import Head from "next/head";
+import TMHead from "../components/TMHead";
 import AppContext from "../context";
-import MasonryLayout from "../components/MasonryLayout";
+import Button from "../components/Button";
 
 export default function Home() {
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(e.target.address.value);
+  };
+
   return (
     <AppContext.Consumer>
       {({ activeAccount, collection }) => {
         return (
           <div>
-            <Head>
-              <title>Tezos Moon</title>
-              <meta name="description" content="Tezos Moon App" />
-              <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <main className="p-6 ">
-              {!activeAccount && (
-                <div className="min-h-screen flex flex-wrap justify-center content-center">
-                  <div className="max-w-md">
-                    Tezos Moon is (will be) an app to browse, display, and
-                    analyze your Tezos NFTs (only hicetnunc for now). Use the
-                    'connect' button in the upper right to connect your wallet
-                    and browse your collection. You can view the source to this
-                    website{" "}
-                    <a href="https://github.com/austingray/tezosmoon">here</a>.
-                  </div>
-                </div>
-              )}
+            <TMHead title="Tezos Moon - Tezos NFT Browser" />
 
-              {activeAccount && (
-                <div className="">
-                  <MasonryLayout nfts={collection} />
+            <div className="flex flex-wrap justify-center pt-24 align-middle">
+              <span className="text-8xl">ꜩ</span>
+              <span className="text-6xl">🌙</span>
+            </div>
+
+            <main className="h-screen pt-12">
+              <div className="grid grid-cols-2 gap-8">
+                <div className="pl-48 text-right">
+                  <form onSubmit={handleSearch} className="mb-4">
+                    <h1>
+                      <label
+                        className="block text-white-700 text-sm font-bold mb-2"
+                        htmlFor="username"
+                      >
+                        Browse by wallet address
+                      </label>
+                    </h1>
+                    <input
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="address"
+                      name="address"
+                      type="text"
+                      placeholder="e.g., tz1aLvmWNq1SbA8mTktMs9NwogU7rf8FiZHf"
+                    />
+                    <div className="mt-3">
+                      <Button type="submit">Search</Button>
+                    </div>
+                  </form>
                 </div>
-              )}
+
+                <div className="pr-48">
+                  Tezos Moon is an app to browse, manage, display, and analyze
+                  Tezos NFTs (only{" "}
+                  <a href="https://hicetnunc.xyz" target="_blank">
+                    hicetnunc
+                  </a>{" "}
+                  for now). You can view the source code to this website on{" "}
+                  <a
+                    href="https://github.com/austingray/tezosmoon"
+                    target="_blank"
+                  >
+                    github
+                  </a>
+                  .
+                </div>
+              </div>
             </main>
           </div>
         );
