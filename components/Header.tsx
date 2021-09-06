@@ -21,12 +21,12 @@ function Header() {
                   <>
                     <Link href={`/profile/${activeAccount.address}/creations`}>
                       <a className="inline-block mt-0 text-teal-lighter hover:text-white mr-4">
-                        My Creations
+                        Creations
                       </a>
                     </Link>
                     <Link href={`/profile/${activeAccount.address}/collection`}>
                       <a className="lg:inline-block mt-0 text-teal-lighter hover:text-white mr-4">
-                        My Collection
+                        Collection
                       </a>
                     </Link>
                   </>
