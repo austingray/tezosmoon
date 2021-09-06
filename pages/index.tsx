@@ -9,7 +9,7 @@ export default function Home() {
     e.preventDefault();
     const address = e.target.address.value;
     if (validateAddress(address)) {
-      router.push(`/profile/${address}/collection`);
+      router.push(`/profile/${address}`);
     }
   };
 
