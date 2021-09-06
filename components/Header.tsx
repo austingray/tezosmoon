@@ -19,14 +19,14 @@ function Header() {
               <div className="text-sm lg:flex-grow">
                 {activeAccount && (
                   <>
-                    <Link href={`/profile/${activeAccount.address}`}>
+                    <Link href={`/profile/${activeAccount.address}/creations`}>
                       <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                        Creations
+                        My Creations
                       </a>
                     </Link>
-                    <Link href={`/profile/${activeAccount.address}`}>
+                    <Link href={`/profile/${activeAccount.address}/collection`}>
                       <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                        Collections
+                        My Collection
                       </a>
                     </Link>
                   </>

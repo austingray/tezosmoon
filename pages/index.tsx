@@ -1,18 +1,23 @@
 import TMHead from "../components/TMHead";
 import AppContext from "../context";
 import Button from "../components/Button";
+import router, { useRouter } from "next/router";
+import { validateAddress } from "@taquito/utils";
 
 export default function Home() {
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(e.target.address.value);
+    const address = e.target.address.value;
+    if (validateAddress(address)) {
+      router.push(`/profile/${address}/collection`);
+    }
   };
 
   return (
     <AppContext.Consumer>
       {({ activeAccount, collection }) => {
         return (
-          <div>
+          <div className="bg-gradient-to-r from-transparent via-purple-900 to-transparent">
             <TMHead title="Tezos Moon - Tezos NFT Browser" />
 
             <div className="flex flex-wrap justify-center pt-24 align-middle">
@@ -24,14 +29,12 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-8">
                 <div className="pl-48 text-right">
                   <form onSubmit={handleSearch} className="mb-4">
-                    <h1>
-                      <label
-                        className="block text-white-700 text-sm font-bold mb-2"
-                        htmlFor="username"
-                      >
-                        Browse by wallet address
-                      </label>
-                    </h1>
+                    <label
+                      className="block text-white-700 text-sm font-bold mb-2"
+                      htmlFor="username"
+                    >
+                      Search by wallet address
+                    </label>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="address"

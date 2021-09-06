@@ -1,6 +1,6 @@
 function Content({ children }) {
   return (
-    <div className="bg-gradient-to-r from-transparent via-purple-900 to-transparent">
+    <div>
       <div>{children}</div>
     </div>
   );
