@@ -63,8 +63,6 @@ export async function getServerSideProps(context) {
   );
   const tzktProfileMetadata = await mdRes.json();
 
-  console.log({ tzktProfile });
-
   return {
     props: { address, tzktProfile, tzktProfileMetadata },
   };
