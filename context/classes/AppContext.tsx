@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useContext } from "react";
 import Token from "./Token";
 
 export class AppCtx {
@@ -31,3 +31,7 @@ export const defaultCtx: AppCtx = {
 
 const AppContext = React.createContext(defaultCtx as any);
 export default AppContext;
+
+export function useAppContext() {
+  return useContext(AppContext);
+}

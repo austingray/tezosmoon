@@ -23,7 +23,7 @@ function Metadata({ token }) {
       <Row
         k="Price"
         v={
-          token.listings.length > 0
+          token.listings && token.listings.length > 0
             ? `${token.listings[0].price / 1000000} tez`
             : "Not For Sale"
         }
