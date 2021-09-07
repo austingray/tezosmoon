@@ -1,3 +1,4 @@
+import { Swap } from "../../context/classes/Token";
 import Button from "../buttons/Button";
 
 function Row({ k, v }) {
@@ -10,16 +11,19 @@ function Row({ k, v }) {
 }
 
 function Metadata({ token }) {
+  const swaps = token.swaps.filter((swap: Swap) => swap.contract_version === 2);
+  if (token.title == "Window Still Life 066") {
+    console.log(token);
+  }
   return (
     <div>
       <Row k="Title" v={token.title} />
       <Row k="Description" v={token.description} />
+      <Row k="Mime Type" v={token.mime} />
       <Row
         k="Price"
         v={
-          token.swaps?.length > 0
-            ? `${token.swaps[0].price / 1000000} tez`
-            : "-"
+          swaps.length > 0 ? `${swaps[0].price / 1000000} tez` : "Not For Sale"
         }
       />
       <div className="mt-4">
