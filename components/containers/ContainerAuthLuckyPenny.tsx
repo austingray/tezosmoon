@@ -1,4 +1,4 @@
-import AppContext from "../../context";
+import AppContext from "../../context/classes/AppContext";
 import Login from "../Login";
 
 const objktId = 249515; // auger's lucky penny

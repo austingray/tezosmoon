@@ -9,7 +9,10 @@ export default class Token {
   description: string;
   supply: number;
   timestamp: string | Date;
-  swaps: Swap[];
+  ask: any[] = [];
+  swaps: Swap[] = [];
+  listings: Listing[] = [];
+  creator: Creator;
 }
 
 export class Swap {
@@ -20,5 +23,15 @@ export class Swap {
   creator: {
     address: string;
   };
+  price: number;
+}
+
+export class Creator {
+  address: string;
+  name: string;
+  metadata: any;
+}
+
+export class Listing {
   price: number;
 }

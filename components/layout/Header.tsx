@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AppContext from "../../context";
+import AppContext from "../../context/classes/AppContext";
 import ButtonLogin from "../buttons/ButtonLogin";
 
 function Header() {

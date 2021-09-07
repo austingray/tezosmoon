@@ -1,16 +1,23 @@
 export default `
-    id
     artifact_uri
     creator_id
+    creator {
+      address
+      name
+      metadata
+    }
+    description
     display_uri
+    id
+    mime
+    royalties
+    supply
     thumbnail_uri
     timestamp
-    mime
     title
-    description
-    supply
     token_tags {
       tag {
+        id
         tag
       }
     }
