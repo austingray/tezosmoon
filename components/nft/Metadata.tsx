@@ -30,7 +30,20 @@ function Metadata({ token }) {
       />
       <div className="mt-4">
         <a href={`https://www.hicetnunc.xyz/objkt/${token.id}`} target="_blank">
-          <Button>Buy it on Hic Et Nunc</Button>
+          <Button>But it on Hic Et Nunc</Button>
+        </a>
+      </div>
+      <div className="mt-1">
+        <a href={`https://henext.xyz/o/${token.id}`} target="_blank">
+          <Button>But it on HENEXT</Button>
+        </a>
+      </div>
+      <div className="mt-1">
+        <a
+          href={`https://objkt.com/asset/hicetnunc/${token.id}`}
+          target="_blank"
+        >
+          <Button>But it on OBJKT</Button>
         </a>
       </div>
     </div>
