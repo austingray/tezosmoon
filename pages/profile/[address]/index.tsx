@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { validateAddress } from "@taquito/utils";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";

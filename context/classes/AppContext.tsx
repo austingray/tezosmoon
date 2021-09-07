@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from "react";
+import Token from "./Token";
 
 export class AppCtx {
   Tezos: any;
@@ -9,6 +10,10 @@ export class AppCtx {
   creations: any;
   login: MouseEventHandler;
   logout: MouseEventHandler;
+  updateNFTData: any;
+  nftData: {
+    [key: number]: Token;
+  };
 }
 
 export const defaultCtx: AppCtx = {
@@ -20,6 +25,8 @@ export const defaultCtx: AppCtx = {
   creations: [],
   login: () => {},
   logout: () => {},
+  updateNFTData: () => {},
+  nftData: {},
 };
 
 const AppContext = React.createContext(defaultCtx as any);

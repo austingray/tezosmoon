@@ -3,13 +3,14 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { fetchCollectorGallery, fetchCreatorGallery } from "./graphql/queries";
-import AppContext, { defaultCtx } from ".";
+import AppContext, { AppCtx, defaultCtx } from "./classes/AppContext";
+import Token from "./classes/Token";
 
-class AppContextProvider extends React.Component {
+class AppContextProvider extends React.Component<any, AppCtx> {
   constructor(props) {
     super(props);
 
-    this.state = defaultCtx as any;
+    this.state = defaultCtx;
   }
 
   componentDidMount = async () => {
@@ -60,6 +61,17 @@ class AppContextProvider extends React.Component {
       });
     };
 
+    const updateNFTData = (token: Token) => {
+      this.setState({
+        nftData: {
+          ...this.state.nftData,
+          ...{
+            [token.id]: token,
+          },
+        },
+      });
+    };
+
     this.setState({
       Tezos: Tezos,
       address,
@@ -69,6 +81,8 @@ class AppContextProvider extends React.Component {
       creations,
       login,
       logout,
+      updateNFTData,
+      nftData: {},
     });
   };
 
