@@ -1,5 +1,6 @@
 import { Swap } from "../../context/classes/Token";
 import Button from "../buttons/Button";
+import ButtonFullWidth from "../buttons/ButtonFullWidth";
 
 function Row({ k, v }) {
   return (
@@ -29,21 +30,30 @@ function Metadata({ token }) {
         }
       />
       <div className="mt-4">
-        <a href={`https://www.hicetnunc.xyz/objkt/${token.id}`} target="_blank">
-          <Button>But it on Hic Et Nunc</Button>
+        <a
+          href={`https://www.hicetnunc.xyz/objkt/${token.id}`}
+          target="_blank"
+          className="no-underline"
+        >
+          <ButtonFullWidth>Buy it on Hic Et Nunc</ButtonFullWidth>
         </a>
       </div>
-      <div className="mt-1">
-        <a href={`https://henext.xyz/o/${token.id}`} target="_blank">
-          <Button>But it on HENEXT</Button>
+      <div className="mt-2">
+        <a
+          href={`https://henext.xyz/o/${token.id}`}
+          target="_blank"
+          className="no-underline"
+        >
+          <ButtonFullWidth>Buy it on HENEXT</ButtonFullWidth>
         </a>
       </div>
-      <div className="mt-1">
+      <div className="mt-2">
         <a
           href={`https://objkt.com/asset/hicetnunc/${token.id}`}
           target="_blank"
+          className="no-underline"
         >
-          <Button>But it on OBJKT</Button>
+          <ButtonFullWidth>Buy it on OBJKT</ButtonFullWidth>
         </a>
       </div>
     </div>
