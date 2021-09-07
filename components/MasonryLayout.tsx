@@ -1,4 +1,4 @@
-import NFTRaw from "./NFTRaw";
+import NFTRaw from "./nft/NFTRaw";
 
 function MasonryLayout({ nfts }) {
   return (
