@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import Button from "../components/buttons/Button";
 import router from "next/router";
 import { validateAddress } from "@taquito/utils";
 import ContainerBlackPurpleGradient from "../components/containers/ContainerBlackPurpleGradient";

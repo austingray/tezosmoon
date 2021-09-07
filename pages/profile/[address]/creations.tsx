@@ -1,6 +1,6 @@
 import { fetchCreatorGallery } from "../../../context/graphql/queries";
 import { validateAddress } from "@taquito/utils";
-import MasonryLayout from "../../../components/MasonryLayout";
+import MasonryLayout from "../../../components/nft/MasonryLayout";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
 

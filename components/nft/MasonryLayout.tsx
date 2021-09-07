@@ -1,10 +1,10 @@
-import NFTPoster from "./nft/NFTPoster";
-import NFTRaw from "./nft/NFTRaw";
+import NFTPoster from "./NFTPoster";
+import NFTRaw from "./NFTRaw";
 
 // <div className="md:masonry-2-col lg:masonry-3-col box-border mx-auto before:box-inherit after:box-inherit">
 function MasonryLayout({ nfts }) {
   return (
-    <div className="grid grid-cols-4 max-w-screen">
+    <div className="grid lg:grid-cols-3 max-w-screen md:grid-cols-2 grid-cols-1 space-x-4">
       {nfts.map((nft) => {
         return (
           <div className="rounded-lg">

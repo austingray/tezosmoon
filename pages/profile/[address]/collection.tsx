@@ -2,8 +2,7 @@ import { fetchCollectorGallery } from "../../../context/graphql/queries";
 import { validateAddress } from "@taquito/utils";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
-import NFTLayoutList from "../../../components/NFTLayoutList";
-import MasonryLayout from "../../../components/MasonryLayout";
+import MasonryLayout from "../../../components/nft/MasonryLayout";
 
 const Collection = ({ address, collection }) => {
   return (

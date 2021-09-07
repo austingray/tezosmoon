@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "../buttons/Button";
 
 function Row({ k, v }) {
   return (
@@ -23,7 +23,7 @@ function Metadata({ token }) {
         }
       />
       <div className="mt-4">
-        <a href="https://www.hicetnunc.xyz/objkt/249515" target="_blank">
+        <a href={`https://www.hicetnunc.xyz/objkt/${token.id}`} target="_blank">
           <Button>Buy it on Hic Et Nunc</Button>
         </a>
       </div>
