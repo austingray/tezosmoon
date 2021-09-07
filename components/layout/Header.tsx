@@ -1,6 +1,6 @@
 import Link from "next/link";
-import AppContext from "../context";
-import ButtonLogin from "./ButtonLogin";
+import AppContext from "../../context";
+import ButtonLogin from "../buttons/ButtonLogin";
 
 function Header() {
   return (
