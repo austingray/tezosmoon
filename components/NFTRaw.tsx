@@ -30,7 +30,7 @@ export default function NFTRaw({ nft }) {
 
       <div className="">
         <div className="">
-          {Object.entries(nft.token).map(([key, value]) => (
+          {Object.entries(token).map(([key, value]) => (
             <div className="grid grid-cols-3">
               <div className="">{key}</div>
               <div className="break-all col-span-2">
