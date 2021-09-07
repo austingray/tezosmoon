@@ -1,4 +1,4 @@
-import NFTListItem from "./NFTListItem";
+import NFTListItem from "./nft/NFTListItem";
 
 function MasonryLayout({ nfts }) {
   return (

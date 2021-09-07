@@ -18,11 +18,7 @@ function Profile({ tzktProfile, tzktProfileMetadata, address }) {
 
         <div>
           <h2>
-            Results from{" "}
-            <a href="https://tzkt.io/tz1aLvmWNq1SbA8mTktMs9NwogU7rf8FiZHf/operations/">
-              TzKT
-            </a>
-            :
+            Results from <a href="https://tzkt.io">TzKT</a>:
           </h2>
           {Object.entries(tzktProfile).map(([key, value]) => (
             <div className="grid grid-cols-3">
