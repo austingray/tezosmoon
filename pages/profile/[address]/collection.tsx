@@ -3,6 +3,7 @@ import { validateAddress } from "@taquito/utils";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
 import NFTLayoutList from "../../../components/NFTLayoutList";
+import MasonryLayout from "../../../components/MasonryLayout";
 
 const Collection = ({ address, collection }) => {
   return (
@@ -12,7 +13,7 @@ const Collection = ({ address, collection }) => {
       <main className="p-6 ">
         <NavProfile address={address} />
         <div className="">
-          <NFTLayoutList nfts={collection} />
+          <MasonryLayout nfts={collection} />
         </div>
       </main>
     </div>

@@ -17,7 +17,7 @@ function ContainerBlackPurpleGradient({ children, pageTitle }) {
         <span className="text-6xl">🌙</span>
       </div>
 
-      <main className="h-screen pt-12">{children}</main>
+      <main className="min-h-screen pt-12">{children}</main>
     </div>
   );
 }

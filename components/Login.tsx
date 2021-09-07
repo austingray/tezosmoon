@@ -1,6 +1,5 @@
 import ContainerBlackPurpleGradient from "./containers/ContainerBlackPurpleGradient";
 import NFTPoster from "./nft/NFTPoster";
-import NFTRaw from "./nft/NFTRaw";
 
 function Login() {
   return (
@@ -9,12 +8,17 @@ function Login() {
         <div>
           <h2 className="text-4xl my-4">Welcome to Tezos Moon</h2>
           <p>
-            You must pick up auger's lucky penny from the hicetnunc NFT
-            marketplace in order to use this website.
+            You must pick up auger's{" "}
+            <a href="https://www.hicetnunc.xyz/objkt/249515">lucky penny</a>{" "}
+            from the{" "}
+            <a href="https://www.hicetnunc.xyz" target="_blank">
+              hic et nunc
+            </a>{" "}
+            NFT marketplace in order to use this website.
           </p>
         </div>
 
-        <div className="bg-black mt-4 rounded-2xl">
+        <div className="max-w-sm m-auto pb-8 mt-8">
           <NFTPoster
             token={{
               id: 249515,

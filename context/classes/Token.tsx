@@ -8,5 +8,15 @@ export default class Token {
   description: string;
   supply: number;
   timestamp: string | Date;
-  swaps: any[];
+  swaps: Swap[];
+}
+
+export class Swap {
+  status: number;
+  amount_left: number;
+  creator_id: string;
+  creator: {
+    address: string;
+  };
+  price: number;
 }
