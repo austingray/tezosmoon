@@ -30,7 +30,7 @@ function ButtonLogin() {
               onClick={login}
               title="Click to connect"
             >
-              Connect Wallet
+              Connect to Login
             </button>
           );
         }

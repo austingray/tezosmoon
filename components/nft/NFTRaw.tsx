@@ -1,23 +1,12 @@
+import Token from "../../context/classes/Token";
+import TokenVideo from "./TokenVideo";
+
 export default function NFTRaw({ nft }) {
-  const token = nft.token ? nft.token : nft;
+  const token: Token = nft.token ? nft.token : nft;
   return (
     <div key={token.id} className="p-5">
       <div className="">
-        {token.mime.split("/")[0] === "video" && (
-          <video
-            loop={true}
-            src={
-              "https://ipfs.io/ipfs/" +
-              token.artifact_uri.split("ipfs://").pop()
-            }
-            poster={
-              "https://ipfs.io/ipfs/" + token.display_uri.split("ipfs://").pop()
-            }
-            autoPlay={true}
-            playsInline={true}
-            muted={true}
-          ></video>
-        )}
+        {token.mime.split("/")[0] === "video" && <TokenVideo token={token} />}
         {token.mime.split("/")[0] === "image" && (
           <img
             src={

@@ -9,7 +9,7 @@ class AppContextProvider extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = defaultCtx;
+    this.state = defaultCtx as any;
   }
 
   componentDidMount = async () => {
@@ -22,7 +22,6 @@ class AppContextProvider extends React.Component {
     Tezos.setWalletProvider(wallet);
 
     const activeAccount = await wallet.client.getActiveAccount();
-    console.log({ activeAccount });
 
     let address = undefined;
     let collection = [];
@@ -44,6 +43,7 @@ class AppContextProvider extends React.Component {
       const activeAccount = await wallet.client.getActiveAccount();
       const address = await wallet.getPKH();
       const collection = await fetchCollectorGallery(activeAccount.address);
+
       this.setState({
         activeAccount,
         address,
