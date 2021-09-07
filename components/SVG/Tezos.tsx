@@ -1,5 +1,4 @@
 function SVGTezos(props) {
-  const fillHex = "#2c7df7";
   return (
     <svg
       {...props}
