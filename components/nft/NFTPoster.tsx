@@ -3,7 +3,7 @@ import VideoWrapper from "./VideoWrapper";
 
 export default function NFTPoster({ token }) {
   return (
-    <div key={token.id} className="p-5">
+    <div key={token.id} className="p-5 grid grid-cols-2">
       <div className="">
         {token.mime.split("/")[0] === "video" && <VideoWrapper token={token} />}
         {token.mime.split("/")[0] === "image" && <ImageWrapper token={token} />}

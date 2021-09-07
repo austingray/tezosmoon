@@ -1,11 +1,13 @@
 import AppContext from "../../context";
 import Login from "../Login";
 
+const objktId = 249515; // auger's lucky penny
+
 const hasAccess = (collection: any[], address) => {
   console.log(`checking access for ${address}`);
   for (let i = 0; i < collection.length; i++) {
     const nft = collection[i];
-    if (nft.token.id === 249515) {
+    if (nft.token.id === objktId) {
       return true; // must own https://www.hicetnunc.xyz/objkt/249515
     }
   }

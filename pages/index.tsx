@@ -6,6 +6,7 @@ import ContainerBlackPurpleGradient from "../components/containers/ContainerBlac
 export default function Home() {
   const handleSearch = (e) => {
     e.preventDefault();
+
     const address = e.target.xtzWalletAddress.value;
     if (validateAddress(address)) {
       router.push(`/profile/${address}`);

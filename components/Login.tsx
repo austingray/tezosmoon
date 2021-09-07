@@ -14,7 +14,7 @@ function Login() {
           </p>
         </div>
 
-        <div className="max-w-sm">
+        <div className="bg-black mt-4 rounded-2xl">
           <NFTPoster
             token={{
               id: 249515,
