@@ -30,7 +30,7 @@ function ButtonLogin() {
               onClick={login}
               title="Click to connect"
             >
-              Connect to Login
+              Login / Connect
             </button>
           );
         }

@@ -1,4 +1,4 @@
-function Video({ token }) {
+function VideoWrapper({ token }) {
   return (
     <video
       loop={true}
@@ -13,4 +13,4 @@ function Video({ token }) {
   );
 }
 
-export default Video;
+export default VideoWrapper;
