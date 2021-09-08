@@ -1,5 +1,6 @@
 import AppContext from "../../context/classes/AppContext";
 import ButtonFullWidth from "../buttons/ButtonFullWidth";
+import { SVGTezos } from "../Logo";
 
 function Row({ k, v }) {
   return (
@@ -10,24 +11,7 @@ function Row({ k, v }) {
   );
 }
 
-function Metadata({ token, externalLinks = false }) {
-  const swaps = token.swaps
-    .filter(
-      (e) =>
-        parseInt(e.contract_version) === 2 &&
-        parseInt(e.status) === 0 &&
-        e.is_valid
-    )
-    .sort((a, b) => {
-      if (a.price < b.price) return -1;
-      if (b.price > a.price) return 1;
-      return 0;
-    });
-
-  if (token.creator.name === "jjjjjohn") {
-    console.log({ token, swaps });
-  }
-
+function Metadata({ token }) {
   return (
     <div>
       <Row k="Title" v={token.title} />
@@ -36,16 +20,20 @@ function Metadata({ token, externalLinks = false }) {
         v={token.creator.name ? token.creator.name : token.creator.address}
       />
       <Row k="Description" v={token.description} />
-      {swaps.length > 0 ? (
+      {token.swapsFiltered.length > 0 ? (
         <AppContext.Consumer>
           {({ collect }) => {
             return (
               <ButtonFullWidth
                 onClick={() => {
-                  collect(swaps[0].id, swaps[0].price);
+                  collect(
+                    token.swapsFiltered[0].id,
+                    token.swapsFiltered[0].price
+                  );
                 }}
               >
-                🔥 scoop for {swaps[0].price / 1000000} tez
+                🔥 scoop for {token.swapsFiltered[0].price / 1000000}{" "}
+                <SVGTezos width={12} className="inline" />
               </ButtonFullWidth>
             );
           }}

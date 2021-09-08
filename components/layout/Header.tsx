@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AppContext from "../../context/classes/AppContext";
 import ButtonLogin from "../buttons/ButtonLogin";
+import Logo from "../Logo";
 
 function Header() {
   return (

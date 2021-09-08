@@ -8,8 +8,8 @@ export const tokenTicketId: number = process.env.NEXT_PUBLIC_TOKEN_ID
 const hasAccess = (collection: any[], address) => {
   console.log(`checking access for ${address}`);
   for (let i = 0; i < collection.length; i++) {
-    const nft = collection[i];
-    if (nft.token.id === tokenTicketId) {
+    const token = collection[i];
+    if (token.id === tokenTicketId) {
       return true; // must own the token
     }
   }
