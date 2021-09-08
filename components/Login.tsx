@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchObjkt } from "../context/graphql/queries";
+import { tokenTicketId } from "./containers/ContainerAuthLuckyPenny";
 import ContainerBlackPurpleGradient from "./containers/ContainerBlackPurpleGradient";
 import NFTPoster from "./nft/NFTPoster";
 
@@ -13,7 +14,7 @@ class Login extends React.Component<any, any> {
   }
 
   async componentDidMount() {
-    const objkt = await fetchObjkt(249515);
+    const objkt = await fetchObjkt(tokenTicketId);
     console.log(objkt);
     this.setState({
       objkt,
@@ -33,7 +34,9 @@ class Login extends React.Component<any, any> {
           </div>
 
           <div className="max-w-sm m-auto pb-8 mt-8">
-            {this.state.objkt && <NFTPoster token={this.state.objkt} />}
+            {this.state.objkt && (
+              <NFTPoster token={this.state.objkt} placeholder={false} />
+            )}
           </div>
         </div>
       </ContainerBlackPurpleGradient>

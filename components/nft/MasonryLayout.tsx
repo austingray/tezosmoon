@@ -20,10 +20,10 @@ function MasonryLayout({ nfts }) {
 
   return (
     <>
-      <select onChange={handleSort}>
+      {/* <select onChange={handleSort}>
         <option>Default</option>
         <option>price:high</option>
-      </select>
+      </select> */}
 
       <div className="grid lg:grid-cols-3 max-w-screen md:grid-cols-2 grid-cols-1 space-x-4">
         {nfts.map((nft) => {

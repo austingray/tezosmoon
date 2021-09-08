@@ -49,7 +49,5 @@ export async function fetchObjktAsk(objktId: number) {
 
 export async function fetchObjkt(id: number) {
   const data = await fetchGraphQL("objkt", objkt, { id });
-  return data.hic_et_nunc_token && data.hic_et_nunc_token.length > 0
-    ? data.hic_et_nunc_token[0]
-    : null;
+  return data.hic_et_nunc_token_by_pk;
 }

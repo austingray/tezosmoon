@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "../components/buttons/Button";
 import router from "next/router";
 import { validateAddress } from "@taquito/utils";
@@ -40,14 +41,10 @@ export default function Home() {
 
         <div className="lg:pr-36 px-12 lg:px-0">
           Tezos Moon is an app to browse, manage, display, and analyze Tezos
-          NFTs (only{" "}
-          <a href="https://hicetnunc.xyz" target="_blank">
-            hicetnunc
-          </a>{" "}
-          for now). You can view the source code to this website on{" "}
-          <a href="https://github.com/austingray/tezosmoon" target="_blank">
-            github
-          </a>
+          NFTs that have been minted on the Hic et Nunc marketplace.{" "}
+          <Link href="/about">
+            <a>Learn More</a>
+          </Link>
           .<div className="mt-4">Might go here: List of tools</div>
         </div>
       </div>

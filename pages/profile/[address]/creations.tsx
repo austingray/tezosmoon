@@ -3,6 +3,7 @@ import { validateAddress } from "@taquito/utils";
 import MasonryLayout from "../../../components/nft/MasonryLayout";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
+import NFTListItem from "../../../components/nft/NFTListItem";
 
 const Collection = ({ address, collection }) => {
   return (
@@ -11,8 +12,13 @@ const Collection = ({ address, collection }) => {
 
       <main className="p-6 ">
         <NavProfile address={address} />
+        <h1 className="text-4xl">Creations</h1>
         <div className="">
-          <MasonryLayout nfts={collection} />
+          {collection.length > 0 ? (
+            <MasonryLayout nfts={collection} />
+          ) : (
+            <div>This address has not minted any creations.</div>
+          )}
         </div>
       </main>
     </div>

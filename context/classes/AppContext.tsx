@@ -14,6 +14,7 @@ export class AppCtx {
   nftData: {
     [key: number]: Token;
   };
+  collect: any;
 }
 
 export const defaultCtx: AppCtx = {
@@ -27,6 +28,7 @@ export const defaultCtx: AppCtx = {
   logout: () => {},
   updateNFTData: () => {},
   nftData: {},
+  collect: () => {},
 };
 
 const AppContext = React.createContext(defaultCtx as any);

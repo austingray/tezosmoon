@@ -11,8 +11,13 @@ const Collection = ({ address, collection }) => {
 
       <main className="p-6 ">
         <NavProfile address={address} />
+        <h1 className="text-4xl">Collection</h1>
         <div className="">
-          <MasonryLayout nfts={collection} />
+          {collection.length > 0 ? (
+            <MasonryLayout nfts={collection} />
+          ) : (
+            <div>This address has not minted any creations.</div>
+          )}
         </div>
       </main>
     </div>
