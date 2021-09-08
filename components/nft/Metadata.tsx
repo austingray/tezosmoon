@@ -18,7 +18,6 @@ function Metadata({ token }) {
         v={token.creator.name ? token.creator.name : token.creator.address}
       />
       <Row k="Description" v={token.description} />
-      <Row k="Mime Type" v={token.mime} />
       <Row
         k="Price"
         v={
@@ -27,20 +26,22 @@ function Metadata({ token }) {
             : "Not For Sale"
         }
       />
-      {[
-        "hicetnunc.xyz/objkt/",
-        "henext.xyz/o/",
-        "objkt.com/asset/hicetnunc/",
-      ].map((url) => (
-        <div className="mt-1" key={url}>
-          <a href={`https://${url}`} target="_blank" className="no-underline">
-            <ButtonFullWidth>
-              view on{" "}
-              {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
-            </ButtonFullWidth>
-          </a>
-        </div>
-      ))}
+      <div>
+        {[
+          "hicetnunc.xyz/objkt/",
+          "henext.xyz/o/",
+          "objkt.com/asset/hicetnunc/",
+        ].map((url) => (
+          <div className="mt-1" key={url}>
+            <a href={`https://${url}`} target="_blank" className="no-underline">
+              <ButtonFullWidth>
+                view on{" "}
+                {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
+              </ButtonFullWidth>
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
