@@ -26,14 +26,18 @@ function Metadata({ token }) {
             : "Not For Sale"
         }
       />
-      <div>
+      <div className="mt-4">
         {[
           "hicetnunc.xyz/objkt/",
           "henext.xyz/o/",
           "objkt.com/asset/hicetnunc/",
         ].map((url) => (
           <div className="mt-1" key={url}>
-            <a href={`https://${url}`} target="_blank" className="no-underline">
+            <a
+              href={`https://${url}/${token.id}`}
+              target="_blank"
+              className="no-underline"
+            >
               <ButtonFullWidth>
                 view on{" "}
                 {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
