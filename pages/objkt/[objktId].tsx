@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import ContainerBlackPurpleGradient from "../../components/containers/ContainerBlackPurpleGradient";
 import { SVGTezos } from "../../components/Logo";
 import NFTPoster from "../../components/nft/NFTPoster";
@@ -35,7 +36,12 @@ class Objkt extends React.Component<any, any> {
               <div className="grid grid-cols-2">
                 <div>
                   <h1 className="text-4xl">{token.title}</h1>
-                  <div className="text-xl">Created by {token.creator.name}</div>
+                  <div className="text-xl">
+                    Created by{" "}
+                    <Link href={`/profile/${token.creator.address}`}>
+                      <a>{token.creator.name}</a>
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="text-right align-bottom mt-auto">
