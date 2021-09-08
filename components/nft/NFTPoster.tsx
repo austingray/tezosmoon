@@ -1,7 +1,5 @@
+import Link from "next/link";
 import React from "react";
-import { Swap } from "../../context/classes/Token";
-import { fetchObjktAsk } from "../../context/graphql/queries";
-import sortListingsByPrice from "../../utils/sortListingsByPrice";
 import ButtonFullWidth from "../buttons/ButtonFullWidth";
 import ImageWrapper from "./ImageWrapper";
 import Metadata from "./Metadata";
@@ -9,10 +7,14 @@ import VideoWrapper from "./VideoWrapper";
 
 function NFTPoster({ token, placeholder = true, externalLinks = true }) {
   return (
-    <div key={token.id} className="bg-black mt-4 rounded-2xl">
+    <div key={token.id} className="bg-black mt-4 rounded-2xl max-w-screen-md">
       <div className="p-5">
         {placeholder ? (
-          <ImageWrapper token={token} placeholder={placeholder} />
+          <Link href={`/objkt/${token.id}`}>
+            <a>
+              <ImageWrapper token={token} placeholder={placeholder} />
+            </a>
+          </Link>
         ) : (
           <>
             {token.mime.split("/")[0] === "video" && (
@@ -30,20 +32,15 @@ function NFTPoster({ token, placeholder = true, externalLinks = true }) {
         {externalLinks && (
           <div className="mt-4">
             {[
-              "hicetnunc.xyz/objkt/",
-              "henext.xyz/o/",
-              "objkt.com/asset/hicetnunc/",
+              "tezosmoon.com/objkt",
+              "hicetnunc.xyz/objkt",
+              "henext.xyz/o",
+              "objkt.com/asset/hicetnunc",
             ].map((url) => (
               <div className="mt-1" key={url}>
-                <a
-                  href={`https://${url}/${token.id}`}
-                  target="_blank"
-                  className="no-underline"
-                >
-                  <ButtonFullWidth>
-                    view on{" "}
-                    {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
-                  </ButtonFullWidth>
+                <a href={`https://${url}/${token.id}`} target="_blank">
+                  view details on{" "}
+                  {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
                 </a>
               </div>
             ))}
