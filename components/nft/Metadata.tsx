@@ -1,5 +1,3 @@
-import { Swap } from "../../context/classes/Token";
-import Button from "../buttons/Button";
 import ButtonFullWidth from "../buttons/ButtonFullWidth";
 
 function Row({ k, v }) {
@@ -20,7 +18,6 @@ function Metadata({ token }) {
         v={token.creator.name ? token.creator.name : token.creator.address}
       />
       <Row k="Description" v={token.description} />
-      <Row k="Mime Type" v={token.mime} />
       <Row
         k="Price"
         v={
@@ -29,32 +26,21 @@ function Metadata({ token }) {
             : "Not For Sale"
         }
       />
-      <div className="mt-4">
-        <a
-          href={`https://www.hicetnunc.xyz/objkt/${token.id}`}
-          target="_blank"
-          className="no-underline"
-        >
-          <ButtonFullWidth>Buy it on Hic Et Nunc</ButtonFullWidth>
-        </a>
-      </div>
-      <div className="mt-2">
-        <a
-          href={`https://henext.xyz/o/${token.id}`}
-          target="_blank"
-          className="no-underline"
-        >
-          <ButtonFullWidth>Buy it on HENEXT</ButtonFullWidth>
-        </a>
-      </div>
-      <div className="mt-2">
-        <a
-          href={`https://objkt.com/asset/hicetnunc/${token.id}`}
-          target="_blank"
-          className="no-underline"
-        >
-          <ButtonFullWidth>Buy it on OBJKT</ButtonFullWidth>
-        </a>
+      <div>
+        {[
+          "hicetnunc.xyz/objkt/",
+          "henext.xyz/o/",
+          "objkt.com/asset/hicetnunc/",
+        ].map((url) => (
+          <div className="mt-1" key={url}>
+            <a href={`https://${url}`} target="_blank" className="no-underline">
+              <ButtonFullWidth>
+                view on{" "}
+                {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
+              </ButtonFullWidth>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

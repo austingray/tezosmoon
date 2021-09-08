@@ -23,17 +23,12 @@ class Login extends React.Component<any, any> {
   render() {
     return (
       <ContainerBlackPurpleGradient pageTitle="Tezos Moon - Login">
-        <div className="max-w-screen-md m-auto text-center">
+        <div className="max-w-screen-sm m-auto text-center p-8">
           <div>
-            <h2 className="text-4xl my-4">Welcome to Tezos Moon</h2>
+            <h2 className="text-4xl my-4">Welcome to Tezos Moon [alpha]</h2>
             <p>
-              You must pick up auger's{" "}
-              <a href="https://www.hicetnunc.xyz/objkt/249515">lucky penny</a>{" "}
-              from the{" "}
-              <a href="https://www.hicetnunc.xyz" target="_blank">
-                hic et nunc
-              </a>{" "}
-              NFT marketplace in order to use this website.
+              if you can't pick up this lucky penny then this site is not ready
+              for you. come back after the alpha.
             </p>
           </div>
 
