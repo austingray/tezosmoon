@@ -1,15 +1,33 @@
+import AppContext from "../../context/classes/AppContext";
 import ButtonFullWidth from "../buttons/ButtonFullWidth";
 
 function Row({ k, v }) {
   return (
-    <div className={`grid grid-cols-3 mb-1`}>
+    <div className="grid grid-cols-3 mb-1">
       <div className={"text-right bg-gray-800 py-1 px-1"}>{k}:</div>
       <div className={`text-left bg-gray-800 col-span-2 py-1 px-1`}>{v}</div>
     </div>
   );
 }
 
-function Metadata({ token }) {
+function Metadata({ token, externalLinks = false }) {
+  const swaps = token.swaps
+    .filter(
+      (e) =>
+        parseInt(e.contract_version) === 2 &&
+        parseInt(e.status) === 0 &&
+        e.is_valid
+    )
+    .sort((a, b) => {
+      if (a.price < b.price) return -1;
+      if (b.price > a.price) return 1;
+      return 0;
+    });
+
+  if (token.creator.name === "jjjjjohn") {
+    console.log({ token, swaps });
+  }
+
   return (
     <div>
       <Row k="Title" v={token.title} />
@@ -18,34 +36,23 @@ function Metadata({ token }) {
         v={token.creator.name ? token.creator.name : token.creator.address}
       />
       <Row k="Description" v={token.description} />
-      <Row
-        k="Price"
-        v={
-          token.listings && token.listings.length > 0
-            ? `${token.listings[0].price / 1000000} tez`
-            : "Not For Sale"
-        }
-      />
-      <div className="mt-4">
-        {[
-          "hicetnunc.xyz/objkt/",
-          "henext.xyz/o/",
-          "objkt.com/asset/hicetnunc/",
-        ].map((url) => (
-          <div className="mt-1" key={url}>
-            <a
-              href={`https://${url}/${token.id}`}
-              target="_blank"
-              className="no-underline"
-            >
-              <ButtonFullWidth>
-                view on{" "}
-                {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
+      {swaps.length > 0 ? (
+        <AppContext.Consumer>
+          {({ collect }) => {
+            return (
+              <ButtonFullWidth
+                onClick={() => {
+                  collect(swaps[0].id, swaps[0].price);
+                }}
+              >
+                🔥 scoop for {swaps[0].price / 1000000} tez
               </ButtonFullWidth>
-            </a>
-          </div>
-        ))}
-      </div>
+            );
+          }}
+        </AppContext.Consumer>
+      ) : (
+        <Row k="Price" v="Sold Out" />
+      )}
     </div>
   );
 }

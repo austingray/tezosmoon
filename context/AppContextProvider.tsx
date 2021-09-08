@@ -1,10 +1,12 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 import { fetchCollectorGallery, fetchCreatorGallery } from "./graphql/queries";
 import AppContext, { AppCtx, defaultCtx } from "./classes/AppContext";
 import Token from "./classes/Token";
+
+const v2Address = "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"; // OBJKTs Marketplace V2 address
 
 class AppContextProvider extends React.Component<any, AppCtx> {
   constructor(props) {
@@ -72,6 +74,21 @@ class AppContextProvider extends React.Component<any, AppCtx> {
       });
     };
 
+    const collect = async (swap_id, amount) => {
+      const trx = await Tezos.wallet
+        .at(v2Address)
+        .then((c) =>
+          c.methods.collect(parseFloat(swap_id)).send({
+            amount: parseFloat(amount),
+            mutez: true,
+            storageLimit: 350,
+          })
+        )
+        .catch((e) => e);
+
+      console.log(trx);
+    };
+
     this.setState({
       Tezos: Tezos,
       address,
@@ -83,6 +100,7 @@ class AppContextProvider extends React.Component<any, AppCtx> {
       logout,
       updateNFTData,
       nftData: {},
+      collect,
     });
   };
 
