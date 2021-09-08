@@ -16,7 +16,7 @@ class Objkt extends React.Component<any, any> {
 
   async componentDidMount() {
     const objkt = await fetchObjkt(this.props.objktId);
-    console.log(objkt);
+
     this.setState({
       objkt,
     });

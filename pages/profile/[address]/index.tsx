@@ -27,17 +27,11 @@ class Profile extends React.Component<any, any> {
 
   async componentDidMount() {
     if (!validateAddress(this.props.address)) {
-      console.log("bad address");
       return;
     }
 
     const tzktProfile = await fetchProfile(this.props.address);
     const tzktProfileMetadata = await fetchProfileMetadata(this.props.address);
-
-    console.log({
-      tzktProfile: tzktProfile.data,
-      tzktProfileMetadata: tzktProfileMetadata.data,
-    });
 
     this.setState({
       tzktProfile,

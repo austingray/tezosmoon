@@ -31,7 +31,6 @@ export async function fetchCreatorGallery(addr: string): Promise<any[]> {
 
   const tokens = data.hic_et_nunc_token.map((t) => addFilteredSwapsToToken(t));
 
-  console.log({ tokens });
   return tokens;
 }
 
@@ -44,7 +43,6 @@ export async function fetchCollectorGallery(addr: string): Promise<any[]> {
     addFilteredSwapsToToken(t.token)
   );
 
-  console.log({ tokens });
   return tokens;
 }
 
