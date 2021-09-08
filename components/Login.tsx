@@ -15,7 +15,6 @@ class Login extends React.Component<any, any> {
 
   async componentDidMount() {
     const objkt = await fetchObjkt(tokenTicketId);
-    console.log(objkt);
     this.setState({
       objkt,
     });

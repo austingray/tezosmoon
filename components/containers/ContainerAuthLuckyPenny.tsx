@@ -18,7 +18,8 @@ const hasAccess = (collection: any[], address) => {
     return true; // or be auger
   }
 
-  return false;
+  // to enable blocking by token ownership, return false
+  return true;
 };
 
 function ContainerAuthLuckyPenny({ children }) {
