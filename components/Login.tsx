@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchObjkt } from "../context/graphql/queries";
-import { tokenTicketId } from "./containers/ContainerAuthLuckyPenny";
+// import { tokenTicketId } from "./containers/ContainerAuthLuckyPenny";
 import ContainerBlackPurpleGradient from "./containers/ContainerBlackPurpleGradient";
 import NFTPoster from "./nft/NFTPoster";
 
@@ -13,12 +13,12 @@ class Login extends React.Component<any, any> {
     };
   }
 
-  async componentDidMount() {
-    const objkt = await fetchObjkt(tokenTicketId);
-    this.setState({
-      objkt,
-    });
-  }
+  // async componentDidMount() {
+  //   const objkt = await fetchObjkt(tokenTicketId);
+  //   this.setState({
+  //     objkt,
+  //   });
+  // }
 
   render() {
     return (
