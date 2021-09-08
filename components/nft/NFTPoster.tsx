@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import ButtonFullWidth from "../buttons/ButtonFullWidth";
 import ImageWrapper from "./ImageWrapper";
 import Metadata from "./Metadata";
 import VideoWrapper from "./VideoWrapper";

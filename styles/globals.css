@@ -57,3 +57,11 @@ a:hover {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 0px;
 }
+
+button svg {
+  fill: #dedede;
+}
+
+button:hover svg {
+  fill: #111111;
+}

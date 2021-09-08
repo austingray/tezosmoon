@@ -1,6 +1,5 @@
 import creatorGallery from "./_creatorGallery";
 import collectorGallery from "./_collectorGallery";
-import objktAsk from "./_objktAsk";
 import objkt from "./_objkt";
 
 export async function fetchGraphQL(
@@ -25,29 +24,52 @@ export async function fetchGraphQL(
   return data;
 }
 
-export async function fetchCreatorGallery(addr: string) {
+export async function fetchCreatorGallery(addr: string): Promise<any[]> {
   const data = await fetchGraphQL("creatorGallery", creatorGallery, {
     address: addr,
   });
 
-  return data.hic_et_nunc_token;
+  const tokens = data.hic_et_nunc_token.map((t) => addFilteredSwapsToToken(t));
+
+  console.log({ tokens });
+  return tokens;
 }
 
-export async function fetchCollectorGallery(addr: string) {
+export async function fetchCollectorGallery(addr: string): Promise<any[]> {
   const data = await fetchGraphQL("collectorGallery", collectorGallery, {
     address: addr,
   });
 
-  return data.hic_et_nunc_token_holder;
-}
+  const tokens = data.hic_et_nunc_token_holder.map((t) =>
+    addFilteredSwapsToToken(t.token)
+  );
 
-export async function fetchObjktAsk(objktId: number) {
-  const data = await fetchGraphQL("objktAsk", objktAsk, { objktId });
-
-  return data.hic_et_nunc_ask;
+  console.log({ tokens });
+  return tokens;
 }
 
 export async function fetchObjkt(id: number) {
   const data = await fetchGraphQL("objkt", objkt, { id });
-  return data.hic_et_nunc_token_by_pk;
+  const token = data.hic_et_nunc_token_by_pk;
+  return addFilteredSwapsToToken(token);
 }
+
+const addFilteredSwapsToToken = (token) => {
+  return {
+    ...token,
+    ...{
+      swapsFiltered: token.swaps
+        .filter(
+          (e) =>
+            parseInt(e.contract_version) === 2 &&
+            parseInt(e.status) === 0 &&
+            e.is_valid
+        )
+        .sort((a, b) => {
+          if (a.price < b.price) return -1;
+          if (b.price > a.price) return 1;
+          return 0;
+        }),
+    },
+  };
+};

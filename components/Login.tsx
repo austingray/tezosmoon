@@ -28,12 +28,11 @@ class Login extends React.Component<any, any> {
           <div>
             <h2 className="text-4xl my-4">Welcome to Tezos Moon [alpha]</h2>
             <p>
-              if you can't pick up this lucky penny then this site is not ready
-              for you. come back after the alpha.
+              You need to pick up my lucky penny if you want to use this site.
             </p>
           </div>
 
-          <div className="max-w-sm m-auto pb-8 mt-8">
+          <div className="inline-block m-auto pb-8 mt-8">
             {this.state.objkt && (
               <NFTPoster token={this.state.objkt} placeholder={false} />
             )}

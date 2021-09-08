@@ -9,6 +9,7 @@ function VideoWrapper({ token }) {
       autoPlay={true}
       playsInline={true}
       muted={true}
+      controls={true}
     ></video>
   );
 }
