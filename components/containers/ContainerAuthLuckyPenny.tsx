@@ -6,7 +6,6 @@
 //   : 249515; // auger's lucky penny
 
 // const hasAccess = (collection: any[], address) => {
-//   console.log(`checking access for ${address}`);
 //   for (let i = 0; i < collection.length; i++) {
 //     const token = collection[i];
 //     if (token.id === tokenTicketId) {

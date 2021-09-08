@@ -75,7 +75,7 @@ class AppContextProvider extends React.Component<any, AppCtx> {
     };
 
     const collect = async (swap_id, amount) => {
-      const trx = await Tezos.wallet
+      await Tezos.wallet
         .at(v2Address)
         .then((c) =>
           c.methods.collect(parseFloat(swap_id)).send({
@@ -85,8 +85,6 @@ class AppContextProvider extends React.Component<any, AppCtx> {
           })
         )
         .catch((e) => e);
-
-      console.log(trx);
     };
 
     this.setState({
