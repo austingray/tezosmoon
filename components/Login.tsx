@@ -52,9 +52,7 @@ class Login extends React.Component<any, any> {
           </div>
 
           <div className="inline-block m-auto pb-8 mt-8">
-            {this.state.objkt && (
-              <NFTPoster token={this.state.objkt} placeholder={false} />
-            )}
+            <NFTPoster token={this.state.objkt} placeholder={false} />
           </div>
         </div>
       </ContainerBlackPurpleGradient>
