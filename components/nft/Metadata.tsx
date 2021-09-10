@@ -1,5 +1,6 @@
 import AppContext from "../../context/classes/AppContext";
 import ButtonFullWidth from "../buttons/ButtonFullWidth";
+import ButtonLogin from "../buttons/ButtonLogin";
 import { SVGTezos } from "../Logo";
 
 function Row({ k, v }) {
@@ -22,8 +23,8 @@ function Metadata({ token }) {
       <Row k="Description" v={token.description} />
       {token.swapsFiltered.length > 0 ? (
         <AppContext.Consumer>
-          {({ collect }) => {
-            return (
+          {({ collect, activeAccount }) => {
+            return activeAccount ? (
               <ButtonFullWidth
                 onClick={() => {
                   collect(
@@ -35,6 +36,11 @@ function Metadata({ token }) {
                 🔥 scoop for {token.swapsFiltered[0].price / 1000000}{" "}
                 <SVGTezos width={12} className="inline" />
               </ButtonFullWidth>
+            ) : (
+              <div>
+                <p>Connect a wallet if you want to scoooooop this</p>
+                <ButtonLogin />
+              </div>
             );
           }}
         </AppContext.Consumer>
