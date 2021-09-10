@@ -38,7 +38,7 @@ function NFTPoster({ token, placeholder = true, externalLinks = true }) {
             ].map((url) => (
               <div className="mt-1" key={url}>
                 <a href={`https://${url}/${token.id}`} target="_blank">
-                  view details on{" "}
+                  view this nft on{" "}
                   {`${url.split(".")[0]}.${url.split(".")[1].split("/")[0]}`}
                 </a>
               </div>

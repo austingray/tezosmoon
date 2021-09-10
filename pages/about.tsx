@@ -4,7 +4,7 @@ import router from "next/router";
 import { validateAddress } from "@taquito/utils";
 import ContainerBlackPurpleGradient from "../components/containers/ContainerBlackPurpleGradient";
 
-export default function Home() {
+export default function About() {
   const handleSearch = (e) => {
     e.preventDefault();
 

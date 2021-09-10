@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchObjkt } from "../context/graphql/queries";
-// import { tokenTicketId } from "./containers/ContainerAuthLuckyPenny";
+import { tokenTicketId } from "./containers/ContainerAuthLuckyPenny";
 import ContainerBlackPurpleGradient from "./containers/ContainerBlackPurpleGradient";
 import NFTPoster from "./nft/NFTPoster";
 
@@ -13,12 +13,12 @@ class Login extends React.Component<any, any> {
     };
   }
 
-  // async componentDidMount() {
-  //   const objkt = await fetchObjkt(tokenTicketId);
-  //   this.setState({
-  //     objkt,
-  //   });
-  // }
+  async componentDidMount() {
+    const objkt = await fetchObjkt(tokenTicketId);
+    this.setState({
+      objkt,
+    });
+  }
 
   render() {
     return (
@@ -27,7 +27,18 @@ class Login extends React.Component<any, any> {
           <div>
             <h2 className="text-4xl my-4">Welcome to Tezos Moon [alpha]</h2>
             <p>
-              You need to pick up my lucky penny if you want to use this site.
+              This site is in very early alpha and is not ready to be used. But
+              if you want to sneak a peek you can buy my lucky penny. Connect
+              with a wallet that possesses my lucky penny and the site is yours.
+            </p>
+            <p>
+              <a href="https://github.com/austingray/tezosmoon" target="_blank">
+                view source
+              </a>
+            </p>
+            <p className="padding-top text-xs pt-4">
+              (If you are the first person to circumvent this I'll give you 10
+              tezos.)
             </p>
           </div>
 
