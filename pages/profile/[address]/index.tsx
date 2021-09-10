@@ -2,9 +2,11 @@ import { validateAddress } from "@taquito/utils";
 import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
 import React from "react";
+import LoadingCard from "../../../components/LoadingCard";
 
 const fetchProfile = async (address) => {
   const res = await fetch(`https://api.tzkt.io/v1/accounts/${address}`);
+  console.log(res);
   return await res.json();
 };
 
@@ -22,6 +24,7 @@ class Profile extends React.Component<any, any> {
     this.state = {
       tzktProfile: null,
       tzktProfileMetadata: null,
+      loading: true,
     };
   }
 
@@ -36,6 +39,7 @@ class Profile extends React.Component<any, any> {
     this.setState({
       tzktProfile,
       tzktProfileMetadata,
+      loading: false,
     });
   }
 
@@ -45,6 +49,9 @@ class Profile extends React.Component<any, any> {
         ? this.state.tzktProfile.alias
         : this.props.address;
 
+    console.log(this.state.tzktProfile);
+    console.log(this.state.loading);
+
     return (
       <div>
         <TMHead title={`Tezos Moon - ${this.props.address} Profile`} />
@@ -53,6 +60,8 @@ class Profile extends React.Component<any, any> {
           <NavProfile address={this.props.address} />
 
           <h1 className="mb-4 text-2xl">{alias}</h1>
+
+          {this.state.loading && <LoadingCard />}
 
           <div>
             <h2>
