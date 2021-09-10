@@ -5,11 +5,12 @@ import TMHead from "../../../components/TMHead";
 import NavProfile from "../../../components/NavProfile";
 import NFTListItem from "../../../components/nft/NFTListItem";
 import React from "react";
+import LoadingCard from "../../../components/LoadingCard";
 
 class Collection extends React.Component<any, any> {
   constructor(props) {
     super(props);
-    this.state = { creations: [] };
+    this.state = { creations: [], loading: true };
   }
 
   async componentDidMount() {
@@ -18,6 +19,7 @@ class Collection extends React.Component<any, any> {
       const creations = await fetchCreatorGallery(address as string);
       this.setState({
         creations,
+        loading: false,
       });
     }
   }
@@ -29,17 +31,23 @@ class Collection extends React.Component<any, any> {
       <div>
         <TMHead title={`Tezos Moon - ${address} Creations`} />
 
-        <main className="p-6 ">
-          <NavProfile address={address} />
-          <h1 className="text-4xl">Creations</h1>
-          <div className="">
-            {creations.length > 0 ? (
-              <MasonryLayout nfts={creations} />
-            ) : (
-              <div>This address has not minted any creations.</div>
-            )}
+        {this.state.loading ? (
+          <div className="py-24">
+            <LoadingCard />
           </div>
-        </main>
+        ) : (
+          <main className="p-6 ">
+            <NavProfile address={address} />
+            <h1 className="text-4xl">Creations</h1>
+            <div className="">
+              {creations.length > 0 ? (
+                <MasonryLayout nfts={creations} />
+              ) : (
+                <div>This address has not minted any creations.</div>
+              )}
+            </div>
+          </main>
+        )}
       </div>
     );
   }
