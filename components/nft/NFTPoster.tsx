@@ -4,7 +4,27 @@ import ImageWrapper from "./ImageWrapper";
 import Metadata from "./Metadata";
 import VideoWrapper from "./VideoWrapper";
 
-function NFTPoster({ token, placeholder = true, externalLinks = true }) {
+function NFTPoster({ token = null, placeholder = true, externalLinks = true }) {
+  if (!token) {
+    return (
+      <div className="border border-gray-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+        <div className="animate-pulse flex space-x-4">
+          <div className="rounded-full bg-gray-300 h-12 w-12"></div>
+          <div className="flex-1 space-y-4 py-1">
+            <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+            <div className="space-y-2">
+              <div className="h-4 bg-gray-300 rounded"></div>
+              <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+            </div>
+          </div>
+        </div>
+        <p className="bg-black rounded-md mt-4 p-4">
+          Loading ... hic et nunc api response times can vary. Working on an
+          intermediate.
+        </p>
+      </div>
+    );
+  }
   return (
     <div key={token.id} className="bg-black mt-4 rounded-2xl max-w-screen-md">
       <div className="p-5">
