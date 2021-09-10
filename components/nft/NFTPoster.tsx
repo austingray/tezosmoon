@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Logo from "../Logo";
 import ImageWrapper from "./ImageWrapper";
 import Metadata from "./Metadata";
 import VideoWrapper from "./VideoWrapper";
@@ -8,6 +9,9 @@ function NFTPoster({ token = null, placeholder = true, externalLinks = true }) {
   if (!token) {
     return (
       <div className="border border-gray-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+        <div className="p-12">
+          <Logo />
+        </div>
         <div className="animate-pulse flex space-x-4">
           <div className="rounded-full bg-gray-300 h-12 w-12"></div>
           <div className="flex-1 space-y-4 py-1">
@@ -18,7 +22,7 @@ function NFTPoster({ token = null, placeholder = true, externalLinks = true }) {
             </div>
           </div>
         </div>
-        <p className="bg-black rounded-md mt-4 p-4">
+        <p className="bg-black rounded-md mt-8 p-4">
           Loading ... hic et nunc api response times can vary. Working on an
           intermediate.
         </p>

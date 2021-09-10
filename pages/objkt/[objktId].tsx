@@ -31,7 +31,7 @@ class Objkt extends React.Component<any, any> {
         pageTitle="Tezos Moon - Login"
       >
         <div className="content-center flex px-8">
-          {token && (
+          {token ? (
             <div className="inline-block m-auto pb-8 mt-8">
               <div className="grid grid-cols-2">
                 <div>
@@ -57,6 +57,10 @@ class Objkt extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
+              <NFTPoster token={token} placeholder={false} />
+            </div>
+          ) : (
+            <div className="inline-block m-auto pb-8 mt-8">
               <NFTPoster token={token} placeholder={false} />
             </div>
           )}
