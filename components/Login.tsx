@@ -36,6 +36,10 @@ class Login extends React.Component<any, any> {
                 view source
               </a>
             </p>
+            <p className="padding-top text-xs pt-4">
+              (If you are the first person to circumvent this I'll give you 10
+              tezos.)
+            </p>
           </div>
 
           <div className="inline-block m-auto pb-8 mt-8">
