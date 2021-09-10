@@ -19,10 +19,10 @@ export default function LoadingCard() {
       <p className="bg-black rounded-md mt-8 p-4">
         Loading ... hic et nunc api response times can vary. Working on an
         intermediate.
-        <p className="mt-5">
-          If you're sitting here for a long time, try refreshing or coming back
-          later.
-        </p>
+      </p>
+      <p className="mt-5">
+        If you're sitting here for a long time, try refreshing or coming back
+        later.
       </p>
     </div>
   );
