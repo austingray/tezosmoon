@@ -48,6 +48,7 @@ export async function fetchCollectorGallery(addr: string): Promise<any[]> {
 
 export async function fetchObjkt(id: number) {
   const data = await fetchGraphQL("objkt", objkt, { id });
+  console.log(data);
   const token = data.hic_et_nunc_token_by_pk;
   return addFilteredSwapsToToken(token);
 }
