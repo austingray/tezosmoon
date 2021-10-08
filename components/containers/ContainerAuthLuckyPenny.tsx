@@ -3,9 +3,14 @@ import Login from "../Login";
 
 export const tokenTicketId: number = process.env.NEXT_PUBLIC_TOKEN_ID
   ? Number(process.env.NEXT_PUBLIC_TOKEN_ID)
-  : 249515; // auger's lucky penny
+  : null;
 
 const hasAccess = (collection: any[], address) => {
+  // if token id is not set then grant access
+  if (!tokenTicketId) {
+    return true;
+  }
+
   for (let i = 0; i < collection.length; i++) {
     const token = collection[i];
     if (token.id === tokenTicketId) {

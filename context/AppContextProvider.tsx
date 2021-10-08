@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -30,9 +30,7 @@ class AppContextProvider extends React.Component<any, AppCtx> {
     let collection = [];
     let creations = [];
     if (activeAccount) {
-      address = await wallet.getPKH();
-      collection = await fetchCollectorGallery(activeAccount.address);
-      creations = await fetchCreatorGallery(activeAccount.address);
+      address = activeAccount.address;
     }
 
     const login = async () => {

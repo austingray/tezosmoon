@@ -29,7 +29,7 @@ export async function fetchCreatorGallery(addr: string): Promise<any[]> {
     address: addr,
   });
 
-  const tokens = data.hic_et_nunc_token.map((t) => addFilteredSwapsToToken(t));
+  const tokens = data.hic_et_nunc_token.map((t) => addExtraPropsToToken(t));
 
   return tokens;
 }
@@ -40,7 +40,7 @@ export async function fetchCollectorGallery(addr: string): Promise<any[]> {
   });
 
   const tokens = data.hic_et_nunc_token_holder.map((t) =>
-    addFilteredSwapsToToken(t.token)
+    addExtraPropsToToken(t.token)
   );
 
   return tokens;
@@ -48,27 +48,38 @@ export async function fetchCollectorGallery(addr: string): Promise<any[]> {
 
 export async function fetchObjkt(id: number) {
   const data = await fetchGraphQL("objkt", objkt, { id });
-  console.log(data);
-  const token = data.hic_et_nunc_token_by_pk;
-  return addFilteredSwapsToToken(token);
+  const token = data && data.hic_et_nunc_token_by_pk;
+  return addExtraPropsToToken(token);
 }
 
-const addFilteredSwapsToToken = (token) => {
-  return {
-    ...token,
-    ...{
-      swapsFiltered: token.swaps
-        .filter(
-          (e) =>
-            parseInt(e.contract_version) === 2 &&
-            parseInt(e.status) === 0 &&
-            e.is_valid
-        )
-        .sort((a, b) => {
-          if (a.price < b.price) return -1;
-          if (b.price > a.price) return 1;
-          return 0;
-        }),
-    },
-  };
+const addExtraPropsToToken = (token) => {
+  const swapsFiltered = token.swaps
+    .filter(
+      (e) =>
+        parseInt(e.contract_version) === 2 &&
+        parseInt(e.status) === 0 &&
+        e.is_valid
+    )
+    .sort((a, b) => {
+      if (a.price < b.price) return -1;
+      if (b.price > a.price) return 1;
+      return 0;
+    });
+
+  let lowestPrice = -1;
+  if (token && token.swapsFiltered && token.swapsFiltered.length > 0) {
+    if (token.swapsFiltered[0].price) {
+      lowestPrice = token.swapsFiltered[0].price / 1000000;
+    }
+  }
+
+  return token
+    ? {
+        ...token,
+        ...{
+          swapsFiltered,
+          lowestPrice,
+        },
+      }
+    : null;
 };
