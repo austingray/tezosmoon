@@ -18,6 +18,7 @@ class Objkt extends React.Component<any, any> {
 
   async componentDidMount() {
     const objkt = await fetchObjkt(this.props.objktId);
+    console.log(objkt);
 
     this.setState({
       objkt,
@@ -56,15 +57,23 @@ class Objkt extends React.Component<any, any> {
 
                 <div className="text-right align-bottom mt-auto">
                   <div className="text-lg">
-                    <span>Lowest Price:</span>{" "}
-                    {token.swapsFiltered[0].price / 1000000}
-                    <span className="ml-1">
-                      <SVGTezos color="#dedede" width={14} className="inline" />
-                    </span>
+                    {token.lowestPrice == -1 && <span>Not For Sale</span>}
+                    {token.lowestPrice > -1 && (
+                      <span>
+                        Lowest Price: {token.lowestPrice}{" "}
+                        <span className="ml-1">
+                          <SVGTezos
+                            color="#dedede"
+                            width={14}
+                            className="inline"
+                          />
+                        </span>
+                      </span>
+                    )}
                   </div>
                   <div>
                     {amountLeft.toLocaleString()} /{" "}
-                    {token.supply.toLocaleString()} Editions
+                    {token.supply.toLocaleString()} Editions Available
                   </div>
                 </div>
               </div>

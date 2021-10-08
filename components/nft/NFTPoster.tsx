@@ -35,7 +35,6 @@ function NFTPoster({ token = null, placeholder = true, externalLinks = true }) {
         {externalLinks && (
           <div className="mt-4">
             {[
-              "tezosmoon.com/objkt",
               "hicetnunc.xyz/objkt",
               "henext.xyz/o",
               "objkt.com/asset/hicetnunc",

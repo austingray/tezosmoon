@@ -1,0 +1,20 @@
+- picture frame nft gallery
+    - first visit is a screen to setup your first gallery
+        - connect your wallet to unlock more options
+            - use wallet address for address option
+        - address or tezos profile name
+        - gallery type
+            - latest transaction pops up first (configurable options:)
+                - shows the transaction price in the bottom right
+                - shows the last transaction time in the bottom left
+                - shows next available price in the upper right
+            - new releases tracked by artist
+                - shows the release time
+                - the editions available
+
+    - inside any gallery
+        - press screen displays menu
+            - buy now
+            - randomize from gallery
+            - change gallery
+
